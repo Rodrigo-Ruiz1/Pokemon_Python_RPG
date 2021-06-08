@@ -5,6 +5,7 @@ from character_class import Enemy
 from validate import Validate
 from battle import Battle
 from location_class import Location
+from ascii import *
 
 
 
@@ -94,8 +95,9 @@ trainer = Trainer(trainer_name, pokemon_party, "Union Cave")
 
 # Location Options
 union_cave_options = ["Ecruteak City"]
-ecruteak_city_options = ["Pokemon Center", "Route 34", "Slowpoke Well"]
+ecruteak_city_options = ["Pokemon Center", "Route 34", "Slowpoke Well", "Enter house with garden"]
 pokemon_center_options = ["Ecruteak City"]
+old_man_options = ["Ecruteak City"]
 route_34_options = ["Battle trainer on the left", "Battle trainer on the right", "Ecruteak City"]
 slowpoke_well_options = ["Walk deeper into well", "Ecruteak City"]
 main_room_options = ["Explore down the ladder", "Explore crack in the wall","Try the large metal door", "Slowpoke Well"]
@@ -106,9 +108,10 @@ sean_office_options = ["Ladder leading out to Ecruteak City", "Battle Team Rocke
 
 
 # Locations
-union_cave = Location("Union Cave", union_cave_options, "You finally navigate your way out of the dark, tricky cave. Ahead of you is a sign that states: Ecruteak City - 500 feet")
+union_cave = Location("Union Cave", union_cave_options, "After several hours of wandering about, you finally navigate your way out of the dark, tricky cave. Ahead of you is a sign: Ecruteak City - 500 feet")
 ecruteak_city = Location("Ecruteak City", ecruteak_city_options, "You're in Ecruteak City. Birds are chirping and life is good.")
 pokemon_center = Location("Pokemon Center", pokemon_center_options, "You walk into the Pokemon Center. Nurse Joy greets you")
+old_man = Location("Old man", old_man_options, "Old man: Hello youngster. Are you new to town? Keep a close eye on your pokemon, strange things have been happening around town lately.")
 route_34 = Location("Route 34", route_34_options, "You leave the city and are now on Route 34. There are trainers all around you battling")
 slowpoke_well = Location("Inside Slowpoke Well", slowpoke_well_options, "You are now inside the slowpoke well. The inside is a lot larger than you imagined. It has dim lighting and feels humid")
 main_room = Location("Deep Inside Slowpoke Well", main_room_options, "You are deep inside the well. You notice a ladder to your right leading down, and a fairly large crack in the wall to your left.")
@@ -125,11 +128,10 @@ sean_office = Location("Sean's office", sean_office_options, "You enter the room
 
 
 
-input("Press enter to continue")
-print("\033c")
 
 
-  
+
+
 def choose_pokemon(trainer, choices):
   count = 0
   while len(choices) > count:
@@ -155,43 +157,54 @@ def current_location(location):
   trainer.location = location.options[location_choice - 1]
   print("\033c")
 
-while True:
-  if trainer.location == 'Union Cave':
-    current_location(union_cave)
 
-  elif trainer.location == 'Ecruteak City':
-    current_location(ecruteak_city)
+def play_game():
+  logo_img()
+  input("Press enter to continue")
+  print("\033c")
+  choose_pokemon(trainer,options)
+  choose_pokemon(trainer,options)
+  choose_pokemon(trainer,options)
+  while True:
+    if trainer.location == 'Union Cave':
+      current_location(union_cave)
 
-  elif trainer.location == 'Pokemon Center':
-    current_location(pokemon_center)
+    elif trainer.location == 'Ecruteak City':
+      current_location(ecruteak_city)
 
-  elif trainer.location == 'Route 34':
-    current_location(route_34)
+    elif trainer.location == 'Pokemon Center':
+      current_location(pokemon_center)
 
-  elif trainer.location == 'Slowpoke Well':
-    current_location(slowpoke_well)
+    elif trainer.location == "Enter house with garden":
+      current_location(old_man)
 
-  elif trainer.location == "Back to Slowpoke Well Entrance":
-    current_location(main_room)
-  
-  elif trainer.location == "Walk deeper into well":
-    current_location(main_room)
-  
-  elif trainer.location == "Explore down the ladder":
-    current_location(grunt_office)
-  
-  elif trainer.location == "Explore crack in the wall":
-    current_location(cracked_wall)
+    elif trainer.location == 'Route 34':
+      current_location(route_34)
 
-  elif trainer.location == "Try the large metal door":
-    current_location(sean_office)
-  
-  elif trainer.location == "Ladder leading out to Ecruteak City":
-    current_location(ecruteak_city)
+    elif trainer.location == 'Slowpoke Well':
+      current_location(slowpoke_well)
+
+    elif trainer.location == "Back to Slowpoke Well Entrance":
+      current_location(main_room)
+    
+    elif trainer.location == "Walk deeper into well":
+      current_location(main_room)
+    
+    elif trainer.location == "Explore down the ladder":
+      current_location(grunt_office)
+    
+    elif trainer.location == "Explore crack in the wall":
+      current_location(cracked_wall)
+
+    elif trainer.location == "Try the large metal door":
+      current_location(sean_office)
+    
+    elif trainer.location == "Ladder leading out to Ecruteak City":
+      current_location(ecruteak_city)
 
 
 
-
+play_game()
 
 
 # current_location(location)
