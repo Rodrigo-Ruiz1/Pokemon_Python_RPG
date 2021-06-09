@@ -86,6 +86,8 @@ class Battle:
         if self.party_status(self.trainer.pokemon_party):
             print(f'You defeated {self.enemy.name}!')
             input("Press enter to continue")
+            print("\033c")
         else:
             print(f'{self.enemy.name} defeated you!')
             input("Press enter to continue")
+            print("\033")
