@@ -111,7 +111,7 @@ sean_office_options = ["Ladder leading out to Ecruteak City", "Battle Team Rocke
 union_cave = Location("Union Cave", union_cave_options, "After several hours of wandering about, you finally navigate your way out of the dark, tricky cave. Ahead of you is a sign: Ecruteak City - 500 feet")
 ecruteak_city = Location("Ecruteak City", ecruteak_city_options, "You're in Ecruteak City. Birds are chirping and life is good.")
 pokemon_center = Location("Pokemon Center", pokemon_center_options, "You walk into the Pokemon Center. Nurse Joy greets you")
-old_man = Location("Old man", old_man_options, "Old man: Hello youngster. Are you new to town? Keep a close eye on your pokemon, strange things have been happening around town lately.")
+old_man = Location("House with garden", old_man_options, "Old man: Hello youngster. Are you new to town? Keep a close eye on your pokemon, strange things have been happening around town lately.")
 route_34 = Location("Route 34", route_34_options, "You leave the city and are now on Route 34. There are trainers all around you battling")
 slowpoke_well = Location("Inside Slowpoke Well", slowpoke_well_options, "You are now inside the slowpoke well. The inside is a lot larger than you imagined. It has dim lighting and feels humid")
 main_room = Location("Deep Inside Slowpoke Well", main_room_options, "You are deep inside the well. You notice a ladder to your right leading down, and a fairly large crack in the wall to your left.")
@@ -198,12 +198,16 @@ def play_game():
 
     elif trainer.location == "Try the large metal door":
       current_location(sean_office)
+
+    elif trainer.location == "Battle Team Rocket Leader":
+      sean_battle.battle()
+      current_location(sean_office)
     
     elif trainer.location == "Ladder leading out to Ecruteak City":
       current_location(ecruteak_city)
 
 
-
+sean_battle = Battle(trainer, sean)
 play_game()
 
 
