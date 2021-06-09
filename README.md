@@ -2,7 +2,7 @@
 
 Pokemon Python Version is a terminal RPG styled game heavily influenced by Pokemon Gold/Silver/Crystal. Created entirely in Python.
 
-![](images/Screenshot_1.png)
+![](Images/Screenshot_1.png)
 
 ## Description
 
